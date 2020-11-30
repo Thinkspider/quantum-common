@@ -1,0 +1,33 @@
+version: '3.7'
+services:
+  quantum_common_nginx:
+    build: nginx/
+    volumes:
+      - quantum_common_web_data_static_files:/collectedstatic
+      - quantum_common_web_data_media_files:/media
+    ports:
+      - ${WEB_PORT}:8080
+    depends_on:
+      - quantum_common_web
+  quantum_common_web:
+    build:
+      ./
+    volumes:
+      - quantum_common_web_data_static_files:/collectedstatic
+      - quantum_common_web_data_media_files:/media
+      - quantum_common_web_root_home:/root
+    environment:
+      - MEDIA_ROOT=/media
+      - STATIC_ROOT=/collectedstatic
+    env_file:
+      - .env
+    expose:
+      - 8000
+volumes:
+  quantum_common_web_data_static_files:
+  quantum_common_web_root_home:
+  quantum_common_web_data_media_files:
+    external:
+      name: quantum_common_web_data_media_files
+
+

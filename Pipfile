@@ -1,0 +1,30 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+autoflake = "*"
+pylint-django = "*"
+yapf = "*"
+isort = "*"
+pywatchman = "*"
+jedi = "*"
+
+[packages]
+django-debug-toolbar = "*"
+django-reversion = "*"
+djangorestframework = "*"
+Django = ">=3.0,<4.0"
+gunicorn = {extras = ["gevent"],version = "*"}
+django-environ = "*"
+six = "*"
+sentry-sdk = ">=0.14,<0.15"
+simplejson = "*"
+django-sql-explorer = "*"
+more-itertools = "*"
+psycopg2-binary = "*"
+django-filter = "*"
+
+[requires]
+python_version = "3.9"
